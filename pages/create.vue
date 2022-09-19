@@ -1,9 +1,9 @@
 <template>
-  <h1>Events</h1>
+  <h1>Create an event</h1>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage',
+  name: 'CreatePage',
 }
 </script>
