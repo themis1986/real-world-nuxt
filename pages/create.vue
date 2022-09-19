@@ -4,6 +4,18 @@
 
 <script>
 export default {
-  name: 'CreatePage',
-}
+  name: "CreatePage",
+  head() {
+    return {
+      title: "Create an event",
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: "You can crete a new event in your neighborhood",
+        },
+      ],
+    };
+  },
+};
 </script>
