@@ -6,24 +6,24 @@
 </template>
 
 <script>
+import EventService from "@/services/EventService.js";
 import EventCard from "~/components/EventCard.vue";
+
 export default {
   name: "IndexPage",
   components: { EventCard },
-  asyncData({ $axios, error }) {
-    return $axios
-      .get("http://localhost:3001/events")
-      .then((res) => {
-        return {
-          events: res.data,
-        };
-      })
-      .catch((e) => {
-        error({
-          statusCode: 503,
-          message: "Unable to fetch events at this time. Please try again later.",
-        });
+  async asyncData({ error }) {
+    try {
+      const { data } = await EventService.getEvents();
+      return {
+        events: data,
+      };
+    } catch (e) {
+      error({
+        statusCode: 503,
+        message: "Unable to fetch events at this time. Please try again later.",
       });
+    }
   },
   head() {
     return {
